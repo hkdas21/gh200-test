@@ -1,0 +1,29 @@
+name: '🎨 ASCII Banner Generator'
+description: 'Generates ASCII art banner for your workflow'
+inputs:
+  text:
+    description: 'Text to convert to ASCII art'
+    required: true
+    default: 'Hello!'
+  font:
+    description: 'Figlet font to use'
+    required: false
+    default: 'standard'
+outputs:
+  banner:
+    description: 'The generated ASCII banner'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install figlet
+      run: sudo apt-get install -y figlet
+      shell: bash
+    - name: Generate Banner
+      id: generate
+      run: |
+        BANNER=$(figlet -f ${{ inputs.font }} "${{ inputs.text }}")
+        echo "$BANNER"
+        echo "banner<<EOF" >> $GITHUB_OUTPUT
+        echo "$BANNER" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+      shell: bash
