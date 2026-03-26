@@ -1,6 +1,13 @@
 name: 🚀 CoHack Journey
 
-on: [push]
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+  schedule: 
+    - cron: '0 9 * * 1'
+  workflow_dispatch: 
 
 env:                                    # Workflow-level
   WORKSHOP_NAME: "GH-200 CoHack"
