@@ -28,18 +28,6 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v6
-      - name: 🔨 Create Build Report
-        run: |
-          mkdir -p build-output
-          echo "Build Report - $(date)" > build-output/build-report.txt
-          echo "Commit: $GITHUB_SHA" >> build-output/build-report.txt
-          echo "Branch: $GITHUB_REF_NAME" >> build-output/build-report.txt
-      - name: 📦 Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-report
-          path: build-output/
-          retention-days: 5
       - name: 🎨 Use Custom Banner Action
         uses: ./ascii-action.yml
         id: banner
