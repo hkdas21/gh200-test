@@ -1,4 +1,3 @@
-# .github/workflows/cohack-journey.yml
 name: 🚀 CoHack Journey
 
 on: [push]
@@ -8,4 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 👋 Say Hello
-        run: echo "Hello from GH-200 CoHack! Let's build something awesome 🚀"
+        run: echo "Hello CoHack!"
+
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 📂 List Files
+        run: ls -la
