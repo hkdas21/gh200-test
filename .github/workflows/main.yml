@@ -40,12 +40,12 @@ jobs:
           name: build-report
           path: build-output/
           retention-days: 5
+      - name: 🎨 Use Custom Banner Action
+        uses: ./ascii-action.yml
+        id: banner
+        with:
+          text: "CoHack!"
+          font: "digital"
+      - name: Show Banner Output
+        run: echo "Generated banner output captured in outputs!"
 
-  notify-team:
-    needs: build
-    uses: ./.github/workflows/reusable-notify.yml
-    with:
-      message: "Deployment complete! Run #${{ github.run_number }}"
-      environment: production
-    secrets:
-      NOTIFY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
