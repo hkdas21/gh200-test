@@ -13,25 +13,20 @@ env:                                    # Workflow-level
   WORKSHOP_NAME: "GH-200 CoHack"
   TRAINER: "Himanshu Kumar"
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true           # Cancel older runs on same branch
+
+
 jobs:
   setup:
-    env:
-      JOB_ENV: "Setup Phase"              #Job Level
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: 🔍 Show All Variable Levels
-        env:
-          STEP_VAR: "I am step-scoped"  # Step-level
+      - name: Step with timeout
+        timeout-minutes: 2
         run: |
-          echo "Workflow : $WORKSHOP_NAME"
-          echo "Job      : $JOB_ENV"
-          echo "Step     : $STEP_VAR"
-          echo "Default  : $GITHUB_ACTOR"
-
-      - name: 🔐 Use Secret
-        env:
-          MY_SECRET: ${{ secrets.MY_API_KEY }}
-        run: |
-          echo "$STEP_VAR"
-          echo "Secret set: ${{ secrets.MY_API_KEY != '' }}"
-          echo "Try print : $MY_SECRET"
+          echo "This step must complete in 2 mins"
+          sleep 30
+          echo "Completed within time!"
