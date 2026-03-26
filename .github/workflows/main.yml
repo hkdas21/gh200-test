@@ -42,7 +42,7 @@ jobs:
           retention-days: 5
 
   notify-team:
-    needs: deploy
+    needs: build
     uses: ./.github/workflows/reusable-notify.yml
     with:
       message: "Deployment complete! Run #${{ github.run_number }}"
