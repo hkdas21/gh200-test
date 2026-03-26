@@ -1,0 +1,25 @@
+name: 🔔 Reusable Notification Workflow
+
+on:
+  workflow_call:
+    inputs:
+      message:
+        required: true
+        type: string
+      environment:
+        required: false
+        type: string
+        default: 'staging'
+    secrets:
+      NOTIFY_TOKEN:
+        required: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📢 Send Notification
+        run: |
+          echo "🔔 Notification: ${{ inputs.message }}"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Triggered by: ${{ github.actor }}"
