@@ -22,4 +22,9 @@ jobs:
           echo "----------------------------------------"
           figlet -f digital "GitHub Actions"
           echo "ASCII Art generated using figlet!"
+
+      - name: RUn Shell Script
+        run: |
+          chmod +x /greet.sh
+          ./greet.sh
           
