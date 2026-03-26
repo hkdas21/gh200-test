@@ -25,6 +25,6 @@ jobs:
 
       - name: RUn Shell Script
         run: |
-          chmod +x /greet.sh
+          chmod +x greet.sh
           ./greet.sh
           
