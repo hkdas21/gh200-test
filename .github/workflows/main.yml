@@ -26,7 +26,7 @@ jobs:
       - name: 🔨 Create Build Report
         run: |
           mkdir -p build-output
-          echo "Build Report - $(Date)" > build-output/buildreport.txt
+          echo "Build Report - $(Date)" >> build-output/buildreport.txt
           echo "Commit: $GITHUB_SHA" >> build-output/build-report.txt
           echo "Branch: $GITHUB_REF_NAME" >> build-output/build-report.tx
       
