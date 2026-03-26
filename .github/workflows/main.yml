@@ -25,5 +25,6 @@ jobs:
         env:
           MY_SECRET: ${{ secrets.MY_API_KEY }}
         run: |
+          echo "$STEP_VAR"
           echo "Secret set: ${{ secrets.MY_API_KEY != '' }}"
           echo "Try print : $MY_SECRET"
